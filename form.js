@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "/");
+    xhr.open("GET", "index.html");
 
     xhr.onload = function (event) {
       if (this.status == 200) {
