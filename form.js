@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelector("form").addEventListener("submit", function (event) {
+  const form = document.querySelector("form")
+  form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const formData = new FormData(this);
@@ -15,8 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .append($("<div>", { text: jsonString }));
 
     const xhr = new XMLHttpRequest();
+    const params = new URLSearchParams(jsonData)
 
-    xhr.open("GET", "index.html");
+    xhr.open('GET', 'index.html' + '?' + params, true);
 
     xhr.onload = function (event) {
       if (this.status == 200) {
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Ошибка: " + this.status);
       }
     };
-
+    console.log(QUERY_STRING);
     xhr.send();
   });
 });
