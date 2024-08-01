@@ -16,18 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
       .append($("<div>", { text: jsonString }));
 
     const xhr = new XMLHttpRequest();
-    const params = new URLSearchParams(jsonData)
+    const params = new URLSearchParams(jsonData);
 
     xhr.open('GET', 'index.html' + '?' + params, true);
 
-    xhr.onload = function (event) {
+    xhr.onload = function () {
       if (this.status == 200) {
         alert(jsonString);
       } else {
         alert("Ошибка: " + this.status);
       }
     };
-    console.log(QUERY_STRING);
     xhr.send();
   });
 });
